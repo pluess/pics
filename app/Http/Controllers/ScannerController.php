@@ -23,17 +23,11 @@ class ScannerController extends Controller
             if (!$it->isDot()) {
                 $path = $it->key();
                 $pics = Pics::firstOrCreate(['path' => $path]);
-                if ($pics->wasRecentlyCreated) {
-                    $pics = new Pics;
-                    $pics->path = $it->key();
-                    $pics->save();
-                }
-                echo "<br>";
             }
         
             $it->next();
         }
 
-        return Response();
+        return new Response();
     }
 }

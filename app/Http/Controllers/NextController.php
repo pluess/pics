@@ -11,25 +11,25 @@ class NextController extends Controller
 
     public function next()
     {
-        $pics = Pics::inRandomOrder()->get()->first();
+        $pics = Pics::where('path', 'not like', '%'.self::BEARBEITET.'%')
+                    ->where('shown', false)
+                    ->get()
+                    ->random();
         
         $pics->shown = true;
         $pics->save();
 
-        // did we get a _bearbeitet image?
-        $pathWithoutBearbeitet = str_replace(BEARBEITET, '', $pics->path);
-        if ($pics->path!=$pathWithoutBearbeitet) {
-            // yes, also mark the original image as used
-            $picsWithout = Pics::where('path', $pathWithoutBearbeitet);
-
-            $picsWithout->shown = true;
-            $picsWithout->save();
-        }
-
         // is there a _bearbeitet version?
-        $pathWithBearbeitet = str_replace('.', '.'.BEARBEITET, $pics->path);
-        $picsWith = Pics::where('path', pathWithBearbeitet);
+        $pathWithBearbeitet = str_replace('.', self::BEARBEITET.'.', $pics->path);
+        $picsWith = Pics::where('path', $pathWithBearbeitet)
+                        ->get()
+                        ->first();
 
+        if ($picsWith) {
+            $picsWith->shown = true;
+            $picsWith->save();
+            $pics = $picsWith;
+        }
 
         $response = new BinaryFileResponse($pics->path);
         // you can modify headers here, before returning
