@@ -22,3 +22,7 @@ $router->get('scan', [
 $router->get('next', [
     'as' => 'next', 'uses' => 'NextController@next'
 ]);
+
+$router->get('remote/{direction}', [
+    'as' => 'remote', 'uses' => 'RemoteController@remote'
+]);
