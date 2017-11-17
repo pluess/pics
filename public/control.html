@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Pics Controller</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        var socket = io('http://192.168.1.102:3000');
+        $('#next-button').click(function () {
+            socket.emit('pics message', 'next');
+            return false;
+        });
+    });
+</script>
+
+<body>
+    <button id="next-button">Next</button>
+</body>
+
+</html>
