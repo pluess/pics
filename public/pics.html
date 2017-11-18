@@ -1,16 +1,27 @@
 <html>
 <style>
-    html,
     body {
-        margin: 0;
         height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: black;
     }
 
-    img {
-        display: block;
-        width: 100%;
+    .fixed-background {
+        position: absolute;
+        top: 0;
+        left: 0;
         height: 100%;
-        object-fit: cover;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .myimg {
+        height: inherit;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
     }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
@@ -25,7 +36,9 @@
 </script>
 
 <body>
-    <img src="/public/next">
+    <div class="fixed-background">
+        <img src="/public/next" class="myimg" />
+    </div>
 </body>
 
 </html>
