@@ -34,6 +34,12 @@
     <div id="next-button" class="container-fluid">
         <h1>Next</h1>
     </div>
+
+    @foreach ($pics as $pic)
+        <p>The name of the pic is {{$pic->id}}</p>
+    @endforeach 
+
+    {{ $pics->links() }}
 </body>
 
-</html>
+</html> 

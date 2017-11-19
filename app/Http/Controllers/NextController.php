@@ -32,12 +32,12 @@ class NextController extends Controller
         }
 
         $response = new BinaryFileResponse($pics->path, 200, [], true, null, true);
+        // modify headers to disable any kind of caching
         $response->headers->addCacheControlDirective('no-cache', true);
         $response->headers->addCacheControlDirective('max-age', 0);
         $response->headers->addCacheControlDirective('must-revalidate', true);
         $response->headers->addCacheControlDirective('no-store', true);
        
-        // you can modify headers here, before returning
         return $response;
     }
 }
