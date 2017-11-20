@@ -23,6 +23,10 @@ $router->get('next', [
     'as' => 'next', 'uses' => 'NextController@next'
 ]);
 
+$router->get('pic/{id}', [
+    'as' => 'pic', 'uses' => 'PicController@pic'
+]);
+
 $router->get('admin', [
-    'as' => 'remote', 'uses' => 'AdminController@admin'
+    'as' => 'admin', 'uses' => 'AdminController@admin'
 ]);

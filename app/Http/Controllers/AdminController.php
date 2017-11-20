@@ -14,6 +14,7 @@ class AdminController extends Controller
         $pics = Pics::where('shown', true)
             ->orderBy('updated_at', 'DESC')
             ->paginate(10);
+        
         return view('admin', ['pics' => $pics]);
     }
 }
