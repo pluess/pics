@@ -23,6 +23,10 @@ $router->get('next', [
     'as' => 'next', 'uses' => 'NextController@next'
 ]);
 
+$router->get('current', [
+    'as' => 'current', 'uses' => 'CurrentController@next'
+]);
+
 $router->get('pic/{id}', [
     'as' => 'pic', 'uses' => 'PicController@pic'
 ]);
