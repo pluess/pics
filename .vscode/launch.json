@@ -17,17 +17,6 @@
             "program": "${file}",
             "cwd": "${fileDirname}",
             "port": 9000
-        },
-        {
-            "name": "artisan websocket:init",
-            "type": "php",
-            "request": "launch",
-            "program": "/Users/ernst/Source/php/pics/artisan",
-            "args": [
-                "websocket:init"
-            ],
-            "cwd": "/Users/ernst/Source/php/pics",
-            "port": 9000
         }
     ]
 }

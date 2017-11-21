@@ -13,10 +13,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script>
     $(function () {
-        var socket = io('http://192.168.1.102:3000');
         $('#next-button').click(function () {
-            socket.emit('pics message', 'next');
-            return false;
+            $.get("/public/next", function(data, status){
+                location.reload();
+            });
         });
     });
 </script>
@@ -45,12 +45,22 @@
     .images {
         margin-top: 20px;
     }
+
+    .pagination {
+        padding: 20px;
+    }
 </style>
 
 <body class="border">
     <div>
         <div id="next-button" class="container-fluid">
             <h1>Next</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            {{ $pics->links('bootstrap-4') }}
         </div>
     </div>
 
@@ -64,12 +74,16 @@
                     {{$pic->path}}
                 </div>
             </div>
-        @endforeach 
+        @endforeach
     </div>
-    {{ $pics->links() }}
+    <div class="row">
+        <div class="col-12">
+            {{ $pics->links('bootstrap-4') }}
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 
-</html> 
+</html>

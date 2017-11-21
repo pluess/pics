@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Log;
 use App\Models\Pics;
-use App\Events\ChangePictureEvent;
 
+/**
+ * Allows to request the next random picture, in case the user
+ * is not happy with the current one.
+ *
+ * Lists all used pictures with their path to make it
+ * easier to find the original file.
+ */
 class AdminController extends Controller
 {
 
-    function admin()
+    public function admin()
     {
         $pics = Pics::where('shown', true)
             ->orderBy('updated_at', 'DESC')
             ->paginate(10);
-        
+
         return view('admin', ['pics' => $pics]);
     }
 }
