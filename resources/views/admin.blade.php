@@ -60,7 +60,7 @@
 
     <div class="row">
         <div class="col-12">
-            {{ $pics->links('bootstrap-4') }}
+            {{ $pics->links('pagination::bootstrap-4') }}
         </div>
     </div>
 
@@ -78,7 +78,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            {{ $pics->links('bootstrap-4') }}
+            {{ $pics->links('pagination::bootstrap-4') }}
         </div>
     </div>
 
